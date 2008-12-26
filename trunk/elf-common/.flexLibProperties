@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flexLibProperties version="1">
+<includeClasses>
+<classEntry path="elf.domain.Entity"/>
+<classEntry path="elf.util.Assert"/>
+<classEntry path="elf.util.LabelUtil"/>
+<classEntry path="elf.util.Observe"/>
+<classEntry path="elf.util.Stack"/>
+<classEntry path="elf.util.TimeZoneUtil"/>
+<classEntry path="elf.util.URLReadUtil"/>
+</includeClasses>
+<includeResources/>
+<namespaceManifests/>
+</flexLibProperties>
