@@ -1,0 +1,60 @@
+<project name="Loof-framework" default="">
+	
+	<property file="build.properties" />
+	
+	<!-- Set the FLEX_HOME property. -->
+	<property name="FLEX_HOME" value="${flex.sdk.home}"/>
+	
+	<!-- Define the Flex tasks. -->
+	<taskdef resource="flexTasks.tasks" classpath="${flex.sdk.home}/ant/lib/flexTasks.jar" />
+
+	<target name="compile">
+		<!-- Generate the config file. 
+		<property name="config" value="${temp.dir}/config.xml" />
+		<xslt in=".flexLibProperties" out="${config}" style="config.xsl" />-->
+
+		<compc output="${output.swc}" locale="${application.locale}" 
+			allow-source-path-overlap="true" headless-server="true" warn-no-constructor="false">
+
+			<!-- Specify namespaces. -->
+			<namespace uri="${namespace}" manifest="${flex.src.dir}/loof-manifest.xml" />
+
+			<!-- Config file. -->
+			<!-- load-config filename="${config}" / -->
+
+			<!-- List of path elements that form the roots of ActionScript class hierarchies. -->
+			<source-path path-element="${flex.src.dir}" />
+			<!-- source-path path-element="${flex.src.dir}/${locale.dir}/{application.locale}" /-->
+
+			<!-- Resource bundles to include. -->
+			<!-- include-resource-bundles string="CairngormMessages" /-->
+
+			<!-- Namespaces to include. -->
+			<include-namespaces uri="${namespace}" />
+
+			<!-- List of SWC files or directories that contain SWC files. -->
+			<external-library-path dir="${flex.sdk.home}/frameworks/libs" append="true">
+				<include name="*.swc" />
+			</external-library-path>
+			<external-library-path dir="${flex.sdk.home}/frameworks/libs/player" append="true">
+				<include name="playerglobal.swc" />
+	        </external-library-path> 
+		</compc>
+	</target>
+
+	<target name="doc">
+		<delete dir="${asdoc.output}" />
+		<exec executable="${asdoc.exe}" failonerror="true">
+			<arg line="-doc-sources ${flex.src.dir}" />
+			<arg line="-external-library-path &quot;libs&quot;" />
+			<arg line="-external-library-path &quot;${flex.sdk.home}/frameworks/libs&quot;" />
+			<arg line="-window-title '${asdoc.title}'" />
+			<arg line="-output ${asdoc.output}" />
+		</exec>
+	</target>
+	
+	<target name="src">
+		<mkdir dir="${output.dir}"/>
+	</target>
+
+</project>

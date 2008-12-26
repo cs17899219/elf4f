@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flexLibProperties version="1">
+<includeClasses>
+<classEntry path="elf.commands.IRemoteCommand"/>
+<classEntry path="elf.business.ServiceLocator"/>
+<classEntry path="elf.helper.Node"/>
+<classEntry path="elf.control.FrontController"/>
+<classEntry path="elf.commands.ICommand"/>
+<classEntry path="elf.core.IScheduleEnhancedManager"/>
+<classEntry path="elf.manager.PubliceDataAccessEnhancedManagerImpl"/>
+<classEntry path="elf.control.Command"/>
+<classEntry path="elf.manager.ScheduleEnhancedManagerImpl"/>
+<classEntry path="elf.core.IModuleEnhancedManager"/>
+<classEntry path="elf.manager.ModuleEnhancedManagerImpl"/>
+<classEntry path="elf.helper.IDataUnitDescriptor"/>
+<classEntry path="elf.core.Framework"/>
+<classEntry path="elf.elf_internal"/>
+<classEntry path="elf.events.ElfModuleEvent"/>
+<classEntry path="elf.core.IPubliceDataAccessEnhancedManager"/>
+<classEntry path="elf.core.IPopUpEnhancedManager"/>
+<classEntry path="elf.events.ElfEvent"/>
+<classEntry path="elf.manager.PopUpEnhancedManagerImpl"/>
+<classEntry path="elf.core.ElfEventDispatcher"/>
+<classEntry path="elf.commands.ElfCommand"/>
+</includeClasses>
+<includeResources/>
+<namespaceManifests>
+<namespaceManifestEntry manifest="elf-manifest.xml" namespace="http://framework.elf/2008/mxml"/>
+</namespaceManifests>
+</flexLibProperties>

@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<componentPackage>
+	<component id="ServiceLocator" class="elf.business.ServiceLocator"/>
+	<component id="FrontController" class="elf.control.FrontController"/>
+	<component id="Command" class="elf.control.Command"/>
+</componentPackage>
