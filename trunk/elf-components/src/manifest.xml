@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<componentPackage>
+	<!--  component id="LoofModule" class="com.threeti.loof.core.LoofModule"/  
+	<component id="ServiceList" class="com.threeti.loof.business.ServiceList"/>-->
+	<component id="PaginationModel" class="elf.components.pagination.PaginationModel" />
+</componentPackage>

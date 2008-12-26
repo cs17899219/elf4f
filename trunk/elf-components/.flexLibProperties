@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flexLibProperties version="1">
+<includeClasses>
+<classEntry path="elf.components.messagebox.Attention"/>
+<classEntry path="elf.components.pagination.PaginationModel"/>
+<classEntry path="elf.components.pagination.classes.IPageFindDescriptor"/>
+<classEntry path="elf.components.pagination.classes.Page"/>
+<classEntry path="elf.components.pagination.classes.PaginationEvent"/>
+</includeClasses>
+<includeResources/>
+<namespaceManifests/>
+</flexLibProperties>
