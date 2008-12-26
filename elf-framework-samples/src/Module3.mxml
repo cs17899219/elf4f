@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Module xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" width="400" height="300">
+<mx:Script>
+	<![CDATA[
+		import elf.core.Framework;
+		
+		private function clickHandler():void{
+			Framework.getInstance().getScheduleManager('Module3.swf').addScheduler('s1',1000,1000,onalert);
+		}
+		
+		private var i:int = 0;
+		private function onalert(event:TimerEvent):void{
+			trace('执行中' + i++ );
+			label01.text = '执行中' + i ;
+		}
+	]]>
+</mx:Script>
+	<mx:Label id="label01" text="启动一个定时器" x="10" y="10"/>
+	<mx:Button label="do" click="{clickHandler()}" x="10" y="36"/>
+</mx:Module>

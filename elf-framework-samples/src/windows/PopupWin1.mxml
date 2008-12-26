@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow xmlns:mx="http://www.adobe.com/2006/mxml" width="400" height="300" 
+	showCloseButton="true" close="close()">
+<mx:Script>
+	<![CDATA[
+		import elf.core.Framework;
+		private function close():void{
+			Framework.getInstance().getPopUpManager(this).removeSingletonPopUp(PopupWin1);
+		}
+	]]>
+</mx:Script>
+	<mx:DataGrid>
+		<mx:columns>
+			<mx:DataGridColumn headerText="Column 1" dataField="col1"/>
+			<mx:DataGridColumn headerText="Column 2" dataField="col2"/>
+			<mx:DataGridColumn headerText="Column 3" dataField="col3"/>
+		</mx:columns>
+	</mx:DataGrid>
+	
+</mx:TitleWindow>

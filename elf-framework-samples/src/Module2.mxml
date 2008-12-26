@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Module xmlns:mx="http://www.adobe.com/2006/mxml" layout="vertical" 
+	width="400" height="400">
+	<mx:Script>
+	<![CDATA[
+		import windows.*;
+		import elf.core.Framework;
+		
+		private function winHandle1():void{
+			Framework.getInstance().getPopUpManager(this).showSingletonPopUp(this,PopupWin1);
+		}
+		
+		private function winHandle2():void{
+			Framework.getInstance().getPopUpManager(this).showSingletonPopUp(this,PopupWin2);
+		}
+		
+		private function winHandle3():void{
+			Framework.getInstance().getPopUpManager(this).showSingletonPopUp(this,PopupWin3);
+		}
+		
+	]]>
+</mx:Script>
+	<mx:Label text="这是一个Module2"/>
+	<mx:HBox>
+		<mx:Button label="win1" click="winHandle1()" />
+		<mx:Button label="win2" click="winHandle2()" />
+		<mx:Button label="win3" click="winHandle3()" />
+	</mx:HBox>
+</mx:Module>
