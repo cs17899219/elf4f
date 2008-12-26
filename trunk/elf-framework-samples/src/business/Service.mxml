@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<elf:ServiceLocator xmlns:elf="http://framework.elf/2008/mxml"
+	 xmlns:mx="http://www.adobe.com/2006/mxml">
+	<mx:RemoteObject id="user" destination="mm" />
+</elf:ServiceLocator>

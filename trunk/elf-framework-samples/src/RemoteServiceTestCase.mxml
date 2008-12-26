@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute">
+	<mx:Script>
+		<![CDATA[
+		import mx.controls.Alert;
+		import mx.rpc.remoting.RemoteObject;
+		import elf.business.ServiceLocator;
+		import elf.core.Framework;
+		import mx.modules.ModuleLoader;
+	
+		private var m:ModuleLoader;
+		private function click():void {
+			Framework.getInstance().getModuleManager().load("Module1.swf");
+		}
+		
+		private function getAppService():void{
+			var obj2:Object = ServiceLocator.getInstance().getService("app");
+			var ro2:RemoteObject = obj2 as RemoteObject;
+			Alert.show("ro2= "+ro2);
+			ro2.logout();
+		}
+		private function getModuleService():void{
+			var obj2:Object = ServiceLocator.getInstance().getService("user");
+			var ro2:RemoteObject = obj2 as RemoteObject;
+			Alert.show("ro2= "+ro2);
+			ro2.logout();
+		}
+		]]>
+	</mx:Script>
+	<business:AppService xmlns:business="business.*"/>
+	<mx:HBox>
+		<mx:Button label="Click" click="click()"/>
+	<mx:Button label="getAppService" click="getAppService()"/>
+	<mx:Button label="getModuleService" click="getModuleService()"/>
+	</mx:HBox>
+</mx:Application>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="vertical"
+	creationComplete="cc()">
+	<mx:Script>
+		<![CDATA[
+			import elf.core.IPubliceDataAccessEnhancedManager;
+			import mx.collections.SortField;
+			import mx.collections.Sort;
+			import model.User;
+			import mx.events.FlexEvent;
+			import mx.collections.ArrayCollection;
+			import elf.core.Framework;
+			
+			private var manage:IPubliceDataAccessEnhancedManager = Framework.getInstance().getPubliceDataAccessManager();
+			
+			[Bindable]
+			private var my:ArrayCollection = new ArrayCollection;
+			[Bindable]
+			private var my2:ArrayCollection = new ArrayCollection;
+			
+			private var host:ArrayCollection = new ArrayCollection;
+			
+			
+			private function cc():void{
+				var user1:User = new User;
+				user1.name = 'peter';
+				user1.password = '0.375';
+				user1.url = "http://www";
+				host.addItem(user1);
+				
+				user1 = new User;
+				user1.name = 'jack';
+				user1.password = '0.95';
+				user1.url = "http://444";
+				host.addItem(user1);
+				
+				user1 = new User;
+				user1.name = 'google';
+				user1.password = '0.55';
+				user1.url = "http://333";
+				host.addItem(user1);
+				
+				manage.addDataUnit("hello",host);
+			    
+				manage.subscribeDataUnit('hello',my);
+				
+				var sort:Sort = new Sort();
+				var sortfield:SortField = new SortField('password');
+				sort.fields = [sortfield];
+				my2.sort = sort;
+				manage.subscribeDataUnit('hello',my2);
+				
+				
+			}
+			
+			private function addHandler():void{
+				var user1:User = new User;
+				user1.name = 'noname';
+				user1.password = ''+Math.random();
+				user1.url = "http://www.google";
+				host.addItem(user1);
+			}
+			
+			private function modityHandler():void{
+				var user1:User = host.getItemAt(1) as User;
+				user1.name = 'bbee' + Math.random();
+			}
+		]]>
+	</mx:Script>
+	<mx:HBox>
+		<mx:Button id="b1" label="增加" x="10" y="10" click="addHandler()"/>
+		<mx:Button id="b2" label="修改" x="10" y="10" click="modityHandler()"/>
+	</mx:HBox>
+	<mx:DataGrid dataProvider="{my}" x="10" y="40">
+		<mx:columns>
+			<mx:DataGridColumn headerText="Column 1" dataField="name"/>
+			<mx:DataGridColumn headerText="Column 2" dataField="password"/>
+			<mx:DataGridColumn headerText="Column 3" dataField="url"/>
+		</mx:columns>
+	</mx:DataGrid>
+	
+	<mx:DataGrid dataProvider="{my2}" x="10" y="201">
+		<mx:columns>
+			<mx:DataGridColumn headerText="Column 1" dataField="name"/>
+			<mx:DataGridColumn headerText="Column 2" dataField="password"/>
+			<mx:DataGridColumn headerText="Column 3" dataField="url"/>
+		</mx:columns>
+	</mx:DataGrid>
+
+	
+</mx:Application>

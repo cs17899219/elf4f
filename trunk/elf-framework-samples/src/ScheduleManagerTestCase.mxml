@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute">
+	<mx:Script>
+		<![CDATA[
+			import mx.events.ModuleEvent;
+			import mx.modules.ModuleLoader;
+			import elf.core.Framework;
+			
+			private var m:ModuleLoader;
+			private function loadHandler():void {
+				m = Framework.getInstance().getModuleManager().load("Module3.swf");
+				m.addEventListener(ModuleEvent.READY ,moduleReadyHandler);
+			}
+			
+			private function unloadHandler():void {
+				Framework.getInstance().getModuleManager().unload("Module3.swf");
+			}
+			
+			//加载完毕后 将图形放入界面中
+			private function moduleReadyHandler(event:ModuleEvent):void{
+				trace(event.type)
+				can.addChild(DisplayObject(event.target));
+			}
+		]]>
+	</mx:Script>
+	<mx:Button label="load" click="{loadHandler()}"  x="10" y="10"/>
+	<mx:Button label="unload" click="{unloadHandler()}"  x="68" y="10"/>
+	<mx:Canvas id="can"  x="10" y="40"/>
+</mx:Application>

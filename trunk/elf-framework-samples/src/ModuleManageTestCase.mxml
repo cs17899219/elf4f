@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="vertical"
+	xmlns:loof="http://loof.3ti.us/2008/mxml">
+<mx:Script>
+	<![CDATA[
+		import elf.core.Framework;
+		import elf.core.IModuleEnhancedManager;
+		import events.SomeEvent;
+		
+		import mx.modules.ModuleLoader;
+		import mx.events.ModuleEvent;
+		
+		private var m:ModuleLoader;
+		private function load():void{
+			var manager:IModuleEnhancedManager =  Framework.getInstance().getModuleManager();
+			m = manager.load("Module1.swf");
+			m.addEventListener(ModuleEvent.READY ,moduleReadyHandler);
+			m = null;
+		}
+		private function unload():void{
+			var manager:IModuleEnhancedManager =  Framework.getInstance().getModuleManager();
+			m = manager.unload("Module1.swf");
+			if(m && can.contains(m))
+				can.removeChild(m);
+			m = null;
+		}
+		//加载完毕后 将图形放入界面中
+		private function moduleReadyHandler(event:ModuleEvent):void{
+			trace(event.type)
+			can.addChild(DisplayObject(event.target));
+		}
+	]]>
+</mx:Script>
+	<business:AppService xmlns:business="business.*"/>
+	<mx:VBox>
+		<mx:HBox>
+			<mx:Button label="加载" click="load()" />
+			<mx:Button label="卸载" click="unload()" />
+		</mx:HBox>
+		<mx:HBox id="can"  backgroundColor="#f4f4f4" />
+	</mx:VBox>
+</mx:Application>

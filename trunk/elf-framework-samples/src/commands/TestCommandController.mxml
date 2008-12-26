@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<elf:FrontController xmlns:mx="http://www.adobe.com/2006/mxml"
+	xmlns:elf="http://framework.elf/2008/mxml">
+	<mx:Script>
+		<![CDATA[
+			import events.SomeEvent;
+		]]>
+	</mx:Script>
+	<elf:commands>
+		<elf:Command eventType="{SomeEvent.SOME_EVENT}" 
+			command="{AnyCommand}"/>
+	</elf:commands>
+</elf:FrontController>

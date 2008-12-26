@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute"
+	xmlns:loof="http://loof.3ti.us/2008/mxml">
+<mx:Script>
+	<![CDATA[
+		import elf.core.IModuleEnhancedManager;
+		import mx.events.FlexEvent;
+		import elf.events.ElfEvent;
+		import mx.events.ModuleEvent;
+		import mx.modules.ModuleLoader;
+		import elf.manager.ModuleEnhancedManagerImpl;
+		import elf.core.Framework;
+		
+		private var m:ModuleLoader;
+		private function load():void{
+			var manager:IModuleEnhancedManager =  Framework.getInstance().getModuleManager();
+			m = manager.load("Module2.swf");
+			m.addEventListener(ModuleEvent.READY ,moduleReadyHandler);
+			m.addEventListener(ModuleEvent.UNLOAD, moduleUnloadHandler);
+		}
+		private function unload():void{
+			var manager:IModuleEnhancedManager =  Framework.getInstance().getModuleManager();
+			m = manager.unload("Module2.swf");
+		}
+		private function moduleReadyHandler(event:ModuleEvent):void{
+			trace('event='+event.type)
+			if(m && !can.contains(m))
+				can.addChild(m);
+		}
+		private function moduleUnloadHandler(event:ModuleEvent):void{
+			trace('event='+event.type)
+			if(m && can.contains(m))
+				can.removeChild(m);
+			m = null;
+		}
+	]]>
+</mx:Script>
+	<mx:VBox x="10" y="10">
+		<mx:HBox>
+			<mx:Label text="这是Application" />
+			<mx:Button label="加载" click="load()" />
+			<mx:Button label="卸载" click="unload()" />
+		</mx:HBox>
+		<mx:HBox id="can" backgroundColor="#fffff0" />
+	</mx:VBox>
+</mx:Application>
